@@ -1,8 +1,6 @@
 Git Commands Used in the Assignment
-===================================
 
-STEP 1 - Local Repository Setup
--------------------------------
+STEP 1: Local Repository Setup
 pwd
     Shows the current folder path (to check I am inside the project folder).
 
@@ -14,12 +12,11 @@ git init -b main
     The -b main option names the default branch "main".
 
 git status
-    Shows the current state of the repo - which files are untracked,
+    Shows the current state of the repo, which files are untracked,
     modified or staged.
 
 
-STEP 2 - Git Workflow
----------------------
+STEP 2: Git Workflow
 git add index.html about.html
     Adds the two files to the staging area so they can be committed.
 
@@ -75,8 +72,7 @@ git log --stat
     files changed in each commit.
 
 
-STEP 3 - .gitignore
--------------------
+STEP 3: .gitignore
 ls -a
     Lists all files including hidden ones (shows app.log, error.log, temp/).
 
@@ -98,8 +94,7 @@ git check-ignore -v app.log error.log temp/notes.txt
     is ignoring them.
 
 
-STEP 4 - Undo Operation
------------------------
+STEP 4: Undo Operation
 git add index.html
 git commit -m "Add footer to home page"
     Makes an extra commit (adds a footer) which will be undone next.
@@ -118,8 +113,7 @@ git status
     Shows that the working tree is clean after the revert.
 
 
-STEP 6 - Adding this file
--------------------------
+STEP 6: Adding this file
 git add git_commands.txt
     Stages this documentation file.
 
@@ -127,8 +121,7 @@ git commit -m "Add git_commands.txt with all commands used"
     Commits this file to the repository.
 
 
-STEP 5 - GitHub Integration
----------------------------
+STEP 5: GitHub Integration
 git remote add origin https://github.com/Harshita-008/my-website.git
     Connects the local repo to the empty public repo created on GitHub.
     "origin" is the short name for the remote URL.
@@ -149,3 +142,15 @@ git branch -a
 
 git log --oneline --graph --all
     Final check of the full history including the remote branches.
+
+
+FINAL UPDATE: Cleaning up this file
+git add git_commands.txt
+    Stages the cleaned up version of this file.
+
+git commit -m "Update git_commands.txt"
+    Commits the updated documentation file.
+
+git push
+    Pushes the new commit to GitHub. No need to write origin main
+    because upstream was already set with -u earlier.

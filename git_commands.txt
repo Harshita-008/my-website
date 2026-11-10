@@ -1,0 +1,151 @@
+Git Commands Used in the Assignment
+===================================
+
+STEP 1 - Local Repository Setup
+-------------------------------
+pwd
+    Shows the current folder path (to check I am inside the project folder).
+
+ls
+    Lists the files in the folder (index.html and about.html).
+
+git init -b main
+    Creates a new empty Git repository in the current folder.
+    The -b main option names the default branch "main".
+
+git status
+    Shows the current state of the repo - which files are untracked,
+    modified or staged.
+
+
+STEP 2 - Git Workflow
+---------------------
+git add index.html about.html
+    Adds the two files to the staging area so they can be committed.
+
+git commit -m "Initial commit: add index.html and about.html"
+    Saves the staged files as the first commit (initial state of project).
+
+git log --oneline
+    Shows the commit history, one commit per line (short id + message).
+
+git diff about.html
+    Shows the exact lines changed in about.html compared to the last commit.
+
+git add about.html
+    Stages the modified about.html file.
+
+git commit -m "Update about page with more details"
+    Creates the second commit with the changes made to about.html.
+
+git branch feature
+    Creates a new branch named "feature" from the current commit.
+
+git branch
+    Lists all branches. The * shows the branch I am currently on.
+
+git checkout feature
+    Switches from main to the feature branch.
+
+git diff index.html
+    Shows the changes made to index.html on the feature branch.
+
+git add index.html
+    Stages the changed index.html on the feature branch.
+
+git commit -m "Add navigation links to home page"
+    Commits the change to the feature branch only (main is not affected).
+
+git checkout main
+    Switches back to the main branch.
+
+git merge --no-ff feature -m "Merge branch feature into main"
+    Merges the feature branch into main. --no-ff makes Git create a
+    merge commit so the branch activity is clearly visible in history.
+
+cat index.html
+    Prints the file content to check that the feature changes are now in main.
+
+git log --oneline --graph --all
+    Shows the history of all branches as a graph, so the branch and
+    merge can be seen clearly.
+
+git log --stat
+    Shows the full commit history with author, date, message and the
+    files changed in each commit.
+
+
+STEP 3 - .gitignore
+-------------------
+ls -a
+    Lists all files including hidden ones (shows app.log, error.log, temp/).
+
+git status
+    Before .gitignore: log files and temp/ show as untracked.
+    After .gitignore: only .gitignore shows, the other files are ignored.
+
+cat .gitignore
+    Shows the rules inside .gitignore (*.log and temp/).
+
+git add .gitignore
+    Stages the .gitignore file.
+
+git commit -m "Add .gitignore to ignore log files and temp folder"
+    Commits the .gitignore file to the repository.
+
+git check-ignore -v app.log error.log temp/notes.txt
+    Checks which files are ignored and shows which rule in .gitignore
+    is ignoring them.
+
+
+STEP 4 - Undo Operation
+-----------------------
+git add index.html
+git commit -m "Add footer to home page"
+    Makes an extra commit (adds a footer) which will be undone next.
+
+git revert HEAD --no-edit
+    Undoes the last commit by creating a new commit that does the exact
+    opposite changes. The old commit stays in history, so it is safe to
+    use on a repo that is shared/pushed to GitHub.
+    --no-edit uses the default commit message without opening an editor.
+
+git show --stat HEAD
+    Shows details of the latest commit (the revert commit) and which
+    file it changed.
+
+git status
+    Shows that the working tree is clean after the revert.
+
+
+STEP 6 - Adding this file
+-------------------------
+git add git_commands.txt
+    Stages this documentation file.
+
+git commit -m "Add git_commands.txt with all commands used"
+    Commits this file to the repository.
+
+
+STEP 5 - GitHub Integration
+---------------------------
+git remote add origin https://github.com/Harshita-008/my-website.git
+    Connects the local repo to the empty public repo created on GitHub.
+    "origin" is the short name for the remote URL.
+
+git remote -v
+    Shows the remote URLs to confirm the connection.
+
+git push -u origin main
+    Uploads the main branch with all its commits to GitHub.
+    -u sets origin/main as the upstream so later just "git push" works.
+
+git push origin feature
+    Uploads the feature branch to GitHub too, so the full repository
+    (all branches) is on GitHub.
+
+git branch -a
+    Lists local and remote branches to confirm both branches are pushed.
+
+git log --oneline --graph --all
+    Final check of the full history including the remote branches.
